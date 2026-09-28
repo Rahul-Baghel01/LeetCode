@@ -6,16 +6,22 @@ class Solution{
         for(int i=0;i<n;i++){
             if(!visited[i]){
                 provinces++;
-                dfs(isConnected,visited,i);
+                bfs(isConnected,visited,i);
             }
         }
         return provinces;
     }
-    void dfs(int[][] isConnected,boolean[] visited,int city){
+    void bfs(int[][] isConnected,boolean[] visited,int city){
+        Queue<Integer> q=new LinkedList<>();
+        q.offer(city);
         visited[city]=true;
-        for(int i=0;i<isConnected.length;i++){
-            if(isConnected[city][i]==1&&!visited[i]){
-                dfs(isConnected,visited,i);
+        while(!q.isEmpty()){
+            int curr=q.poll();
+            for(int i=0;i<isConnected.length;i++){
+                if(isConnected[curr][i]==1&&!visited[i]){
+                    visited[i]=true;
+                    q.offer(i);
+                }
             }
         }
     }
