@@ -15,7 +15,6 @@ class Solution{
             backtrack(candidates,target-candidates[index],index,cur,ans);
             cur.remove(cur.size()-1);
         }
-
         backtrack(candidates,target,index+1,cur,ans);
     }
 }
